@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base:: parent(~{::#content}, ~{::title})}">
+  <head>
+    <title>Dashboard Page</title>
+  </head>
+  <body>
+    <div id="content">
+      <!-- sidebar  -->
+      <!-- user logged In then will show sidebar also  -->
+      <div th:if="${loggedInUser}">
+        <div data-th-replace="~{user/sidebar::sidebar}"></div>
+      </div>
+
+      <div  class="sm:pl-64 pt-20">
+        <h1 class="text-4xl">welcome to Dashboard page</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque,
+          veritatis! Optio ad facere beatae, dignissimos neque quasi
+          reprehenderit saepe consequuntur.
+        </p>
+      </div>
+      
+    </div>
+  </body>
+</html>

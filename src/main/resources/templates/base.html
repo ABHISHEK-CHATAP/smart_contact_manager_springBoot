@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="parent(content, title)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-th-replace="${title}">SCM</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- tailwind output css file path  -->
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}"/>
+
+</head>
+<body class="dark:bg-gray-900 bg-gray-100 dark:text-white">
+
+    <!-- common header  -->
+     <!-- user is logged In then this navbar  -->
+    <div th:if="${loggedInUser}">
+        <div data-th-replace="~{user/user_navbar::user-navbar}"></div>
+    </div>
+    
+    <!-- user is not logged In then this navbar  -->
+    <div th:unless="${loggedInUser}">
+     <div data-th-replace="~{navbar:: navbar}"></div>
+    </div>
+
+    <!-- main content  -->
+     <div class="p-4">
+         <section data-th-replace="${content}"></section>
+
+     </div>
+
+     <!-- common footer  -->
+
+
+
+    <!-- flow bite content  -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <!-- table to excel cdn link  -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/table2excel@1.0.4/dist/table2excel.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
+
+    <script data-th-src="@{'/js/script.js'}"></script>
+
+</body>
+</html>
